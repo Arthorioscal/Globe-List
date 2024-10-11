@@ -5,7 +5,7 @@ import App from './App.tsx'
 import './index.css'
 
 const client = new ApolloClient({
-  uri: 'https://flyby-router-demo.herokuapp.com/',
+  uri: 'https://countries.trevorblades.com/graphql',
   cache: new InMemoryCache(),
 });
 
