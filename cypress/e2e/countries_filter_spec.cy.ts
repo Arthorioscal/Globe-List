@@ -20,4 +20,15 @@ describe ('Countries List filters' , () => {
     cy.contains('🇦🇶 Antarctica - ()').should('not.exist');
     cy.contains('🇧🇷 Brazil - Brasília (Portuguese)').should('not.exist');
   });
+
+  it ('search by language' , () => {
+    cy.visit('http://localhost:5173/')
+
+    cy.get('#languageFilter').select('Portuguese');
+
+    cy.contains('🇧🇷 Brazil - Brasília (Portuguese)').should('exist');
+    cy.contains('🇦🇩 Andorra - Andorra la Vella (Catalan)').should('not.exist');
+    cy.contains('🇦🇶 Antarctica - ()').should('not.exist');
+    cy.contains('🇧🇪 Belgium - Brussels (Dutch, French, German)').should('not.exist');
+  });
 });
