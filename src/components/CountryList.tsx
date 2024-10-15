@@ -37,6 +37,7 @@ const CountryList: React.FC = () => {
       <div className="mb-4">
         <input
           type="text"
+          id="nameFilter"
           placeholder="Search by name"
           value={nameFilter}
           onChange={(e) => setNameFilter(e.target.value)}
@@ -44,6 +45,7 @@ const CountryList: React.FC = () => {
         />
         <input
           type="text"
+          id="capitalFilter"
           placeholder="Search by capital"
           value={capitalFilter}
           onChange={(e) => setCapitalFilter(e.target.value)}
