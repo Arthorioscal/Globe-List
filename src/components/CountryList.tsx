@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import CountryFilter from './CountryFilter';
 import CountryRow from './CountryRow';
-
-const COUNTRIES = gql`
-  query {
-    countries {
-      emoji
-      name
-      capital
-      languages {
-        name
-      }
-    }
-  }
-`;
+import { COUNTRIES } from '../queries/query';
 
 const CountryList: React.FC = () => {
   const [nameFilter, setNameFilter] = useState('');
