@@ -31,4 +31,4 @@ describe ('Countries List filters' , () => {
     cy.contains('🇦🇶 Antarctica - ()').should('not.exist');
     cy.contains('🇧🇪 Belgium - Brussels (Dutch, French, German)').should('not.exist');
   });
-});
+});A

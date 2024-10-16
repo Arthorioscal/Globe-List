@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
+import CountryFilter from './CountryFilter';
+import CountryRow from './CountryRow';
 
 const COUNTRIES = gql`
   query {
@@ -50,45 +52,19 @@ const CountryList: React.FC = () => {
 
   return (
     <div className='m-4 p-4 rounded shadow-lg'>
-      <div className="mb-4">
-        <input
-          type="text"
-          id="nameFilter"
-          placeholder="Search by name"
-          value={nameFilter}
-          onChange={(e) => setNameFilter(e.target.value)}
-          className="p-2 rounded mr-2"
-        />
-        <input
-          type="text"
-          id="capitalFilter"
-          placeholder="Search by capital"
-          value={capitalFilter}
-          onChange={(e) => setCapitalFilter(e.target.value)}
-          className="p-2 rounded mr-2"
-        />
-        <select
-          id="languageFilter"
-          value={languageFilter}
-          onChange={(e) => setLanguageFilter(e.target.value)}
-          className="p-2 rounded"
-        >
-          <option value="">All Languages</option>
-          {languages.map((language) => (
-            <option key={language} value={language}>
-              {language}
-            </option>
-          ))}
-        </select>
-      </div>
-
+      <CountryFilter
+        nameFilter={nameFilter}
+        setNameFilter={setNameFilter}
+        capitalFilter={capitalFilter}
+        setCapitalFilter={setCapitalFilter}
+        languageFilter={languageFilter}
+        setLanguageFilter={setLanguageFilter}
+        languages={languages}
+      />
       <ul className='list-inside'>
         {filteredCountries.length > 0 ? (
           filteredCountries.map((country: any) => (
-            <li key={country.name} className='mb-2 p-2 border-b-0'>
-              <span className="font-bold">{country.emoji} {country.name}</span> - {country.capital} 
-              <span className="text-sm text-gray-600"> ({country.languages.map((lang: any) => lang.name).join(', ')})</span>
-            </li>
+            <CountryRow key={country.name} country={country} />
           ))
         ) : (
           <li>No countries found</li>
